@@ -7,7 +7,10 @@ Base = declarative_base()
 
 engine = create_engine(connection_string, echo=True)
 
-Base.metadata.create_all(engine)
+
+def create_all_entities():
+    Base.metadata.create_all(engine)
+
 
 Session = sessionmaker()
 

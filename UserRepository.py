@@ -1,4 +1,4 @@
-from sqlalchemy import asc
+from sqlalchemy import asc, text
 from User import User
 
 
@@ -39,6 +39,8 @@ class UserRepository:
 
     # https://docs.sqlalchemy.org/en/14/orm/query.html#sqlalchemy.orm.Query.update
     def update(self, id, data):
+        # data = {User.username: 'baba'}
+        # data = {'username': 'baba'}
         rows_affected = self.local_session.query(User).filter(User.id == id)\
             .update(data, synchronize_session=False)
 
