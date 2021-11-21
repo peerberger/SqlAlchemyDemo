@@ -1,3 +1,7 @@
+from User import User
+from Order import Order
+from ManyToMany import Teacher, Student
+from sqlalchemy import text
 from UserRepository import UserRepository
 from db_cofig import local_session, create_all_entities
 
@@ -53,10 +57,16 @@ repo = UserRepository(local_session)
 # print(users_desc)
 #
 #
+# ---------- Plain SQL and Stored Procedures ----------
+#
+#
 # result = local_session.execute(text('SELECT * FROM sp_get_all()'))
-# # users = [User(user[0], user[1], user[2], user[3]) for user in result]
-# users = [User(user._mapping['id'], user._mapping['username'], user._mapping['email'], user._mapping['date_created'])
-#          for user in result]
+# users = [User(id=user[0], username=user[1], email=user[2], date_created=user[3]) for user in result]
+# # users = [User(id=user._mapping['id'],
+# #               username=user._mapping['username'],
+# #               email=user._mapping['email'],
+# #               date_created=user._mapping['date_created'])
+# #          for user in result]
 # print(users)
 #
 #
@@ -71,5 +81,25 @@ repo = UserRepository(local_session)
 # print(users)
 #
 #
-# user = repo.get_by_id(2)
-# print()
+# ---------- Relationships ----------
+# https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html
+#
+#
+# orders = [Order(desc='soap', user_id=2), Order(desc='coacoa', user_id=2), Order(desc='sugar', user_id=2)]
+# local_session.add_all(orders)
+# local_session.commit()
+# order = local_session.get(Order, 2)
+# desc = order.desc
+# user = order.user  # with backref
+# print(desc)
+# print(user)
+#
+#
+# teacher = Teacher(
+#     name='mr steve',
+#     students=[
+#         Student(name='nikki'),
+#         Student(name='barbara')
+# ])
+# # local_session.add(teacher)
+# local_session.commit()
