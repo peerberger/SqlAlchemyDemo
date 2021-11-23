@@ -8,7 +8,7 @@ class User(Base):
     __tablename__ = 'users'
     id = Column(Integer(), primary_key=True)
     username = Column(String(25), nullable=False, unique=True)
-    email = Column(String(80), nullable=False, unique=True)
+    email = Column(String(80), nullable=False, unique=True, index=True)  # https://docs.sqlalchemy.org/en/14/core/constraints.html#indexes
     date_created = Column(DateTime(), default=datetime.utcnow())
 
     orders = relationship("Order",
