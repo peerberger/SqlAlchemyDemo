@@ -4,8 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-psycopg2 = "*"
-sqlalchemy = "*"
+psycopg2 = "~=2.9"
+sqlalchemy = "~=1.4"
 
 [dev-packages]
 
