@@ -3,6 +3,8 @@ from sqlalchemy.orm import relationship, backref
 from db_cofig import Base
 
 
+# https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html#one-to-one
+
 class Driver(Base):
     __tablename__ = 'drivers'
     id = Column(Integer, primary_key=True)

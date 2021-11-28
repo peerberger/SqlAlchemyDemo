@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from OneToOne import Driver, Car
 from User import User
 from Order import Order
@@ -8,6 +7,8 @@ from sqlalchemy import text
 from UserRepository import UserRepository
 from db_cofig import local_session, create_all_entities
 
+# NOTE THAT IN ORDER TO RECOGNIZE NEW ENTITY CLASSES FOR CREATION
+# YOU NEED TO IMPORT THEM SO PYTHON RUNS THEIR MODULES!
 create_all_entities()
 repo = UserRepository(local_session)
 
@@ -120,7 +121,7 @@ repo = UserRepository(local_session)
 # car = local_session.get(Car, 1)
 # print(car.driver)
 #
-# 
+#
 # ---------- Join ----------
 # https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_working_with_joins.htm
 #
