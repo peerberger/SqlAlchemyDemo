@@ -1,3 +1,6 @@
+from datetime import datetime
+
+from OneToOne import Driver, Car
 from User import User
 from Order import Order
 from ManyToMany import Teacher, Student
@@ -103,3 +106,24 @@ repo = UserRepository(local_session)
 # ])
 # # local_session.add(teacher)
 # local_session.commit()
+#
+#
+# driver = Driver(
+#     name='carl',
+#     car=Car(
+#         make_year=datetime(2020, 1, 1, 0, 0, 0)
+#     )
+# )
+# local_session.add(driver)
+# local_session.commit()
+#
+# car = local_session.get(Car, 1)
+# print(car.driver)
+#
+# 
+# ---------- Join ----------
+# https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_orm_working_with_joins.htm
+#
+#
+# res1 = local_session.query(User, Student).filter(User.id == Student.id).all()
+# print(res1)

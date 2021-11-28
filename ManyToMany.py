@@ -18,7 +18,7 @@ class Teacher(Base):
     students = relationship('Student', secondary=association_table, backref='teachers')
 
     def __repr__(self):
-        return f'<Order id={self.id} desc={self.name}>'
+        return f'<Teacher id={self.id} desc={self.name}>'
 
 
 class Student(Base):
@@ -27,4 +27,4 @@ class Student(Base):
     name = Column(String(25), nullable=False)
 
     def __repr__(self):
-        return f'<Order id={self.id} desc={self.name}>'
+        return f'<Student id={self.id} desc={self.name}>'
