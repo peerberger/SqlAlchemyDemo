@@ -5,7 +5,7 @@ connection_string = 'postgresql+psycopg2://postgres:admin@localhost/sqlalchemy_t
 
 Base = declarative_base()
 
-engine = create_engine(connection_string, echo=True)
+engine = create_engine(connection_string, echo=True)  # echo makes the console print all the sql statements being run
 
 
 def create_all_entities():

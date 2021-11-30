@@ -49,11 +49,11 @@ class UserRepository:
         return rows_affected
 
         # another way to manually update:
-        # user_to_update = local_session.query(User).filter(User.id == 2).first()
+        # user_to_update = self.local_session.query(User).filter(User.id == 2).first()
         #
         # user_to_update.username = 'baba'
         #
-        # local_session.commit()
+        # self.local_session.commit()
 
     # https://docs.sqlalchemy.org/en/14/orm/query.html#sqlalchemy.orm.Query.delete
     def delete(self, id):
