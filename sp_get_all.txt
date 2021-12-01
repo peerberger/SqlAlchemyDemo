@@ -1,0 +1,15 @@
+CREATE OR REPLACE FUNCTION public.sp_get_all(
+	)
+    RETURNS TABLE(id integer, username character varying, email character varying, date_created timestamp without time zone)
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+    ROWS 1000
+
+AS $BODY$
+BEGIN
+    RETURN QUERY
+		SELECT *
+		FROM users;
+END;
+$BODY$;
